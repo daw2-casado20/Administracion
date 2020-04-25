@@ -1,7 +1,7 @@
 <?php
-$db = mysqli_connect('localhost', 'adri', 'root') or 
+$db = mysqli_connect('localhost', 'id13394599_administrator', '->f9qDQwGDM7Fqq=') or 
     die ('Unable to connect. Check your connection parameters.');
-mysqli_select_db($db, 'emociones') or die(mysqli_error($db));
+mysqli_select_db($db, 'id13394599_usuarios') or die(mysqli_error($db));
 ?>
 <html>
  <head>
@@ -14,11 +14,11 @@ case 'add':
     switch ($_GET['type']) {
     case 'movie':
         $query = 'INSERT INTO
-            users
+            usuarios
                 (administrador, tutor, nombre, apellidos, curso, grupo)
             VALUES
-                ("' . $_POST['administrador'] . '",
-                 "' . $_POST['tutor'] . '",
+                ('. $_POST['administrador'] .' ,
+                  '. $_POST['tutor'] .' ,
                  "' . $_POST['nombre'] . '",
                  "' . $_POST['apellidos'] . '",
                  ' . $_POST['curso'] . ',
@@ -26,11 +26,11 @@ case 'add':
         break;
     case 'people':
         $query = 'INSERT INTO
-            emocion
-                (id_alumno, codigoEmocional, comentario, fecha, hora)
+            emociones
+                (id_alumno, codigo_emocional, comentario, fecha, hora)
             VALUES
                 (' . $_POST['id_alumno'] . ',
-                 ' . $_POST['codigoEmocional'] . ',
+                 ' . $_POST['codigo_emocional'] . ',
                  "' . $_POST['comentario'] . '",
                  "' . $_POST['fecha'] . '",
                  "' . $_POST['hora'] . '")';
@@ -40,7 +40,7 @@ case 'add':
 case 'edit':
     switch ($_GET['type']) {
     case 'movie':
-        $query = 'UPDATE users SET
+        $query = 'UPDATE usuarios SET
                 administrador = ' . $_POST['administrador'] . ',
                 tutor = ' . $_POST['tutor'] . ',
                 nombre = "' . $_POST['nombre'] . '",
@@ -51,9 +51,9 @@ case 'edit':
                 id_alumno = ' . $_POST['id_alumno'];
         break;
     case 'people':
-    $query = 'UPDATE emocion SET
+    $query = 'UPDATE emociones SET
             id_alumno = ' . $_POST['id_alumno'] . ',
-            codigoEmocional = ' . $_POST['codigoEmocional'] . ',
+            codigo_emocional = ' . $_POST['codigo_emocional'] . ',
             comentario = "' . $_POST['comentario'] . '",
             fecha = "' . $_POST['fecha'] . '",
             hora = "' . $_POST['hora'] . '"
