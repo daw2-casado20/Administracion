@@ -1,39 +1,38 @@
 <?php
-$db = mysqli_connect('localhost', 'adri', 'root') or 
+$db = mysqli_connect('localhost', 'id13394599_administrator', '->f9qDQwGDM7Fqq=') or 
     die ('Unable to connect. Check your connection parameters.');
-mysqli_select_db($db, 'emociones') or die(mysqli_error($db));
+mysqli_select_db($db, 'id13394599_usuarios') or die(mysqli_error($db));
 
 if (!isset($_GET['do']) || $_GET['do'] != 1) {
     switch ($_GET['type']) {
     case 'movie':
-        echo 'Are you sure you want to delete this musica?<br/>';
+        echo 'Seguro que quiere borrar este usuario?<br/>';
         break;
     case 'people':
-        echo 'Are you sure you want to delete this person?<br/>';
+        echo 'Seguro que quiere borrar la emocion de este usuario?<br/>';
         break;
     } 
-    echo '<a href="' . $_SERVER['REQUEST_URI'] . '&do=1">yes</a> '; 
-    echo 'or <a href="admin.php">no</a>';
+    echo '<a href="' . $_SERVER['REQUEST_URI'] . '&do=1">SI</a> '; 
+    echo 'o <a href="admin.php">NO</a>';
 } else {
     switch ($_GET['type']) {
     case 'movie':
 
-        $query = 'DELETE FROM users  WHERE id_alumno= ' . $_GET['id'];
+        $query = 'DELETE FROM usuarios  WHERE id_alumno= ' . $_GET['id'];
         $result = mysqli_query($db, $query) or die(mysqli_error($db));
 ?>
-<p style="text-align: center;">Your person has been deleted.
-<a href="admin.php">Return to Index</a></p>
+<p style="text-align: center;">La emocion ha sido eliminada.
+<a href="admin.php">Vuelve a la pagina principal administrativa</a></p>
 <?php
         break;
     case 'people':
-         $query = 'DELETE FROM emocion  WHERE id_emocion = ' . $_GET['id'];
+         $query = 'DELETE FROM emociones  WHERE id_emocion = ' . $_GET['id'];
         $result = mysqli_query($db, $query) or die(mysqli_error($db));
 ?>
-<p style="text-align: center;">Your song has been deleted.
-<a href="admin.php">Return to Index</a></p>
+<p style="text-align: center;">El usuario ha sido eliminado.
+<a href="admin.php">Vuelve a la pagina principal administrativa</a></p>
 <?php
         break;
     }
 }
 ?>
-
