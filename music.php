@@ -1,13 +1,13 @@
 <?php
-$db = mysqli_connect('localhost', 'adri', 'root') or 
+$db = mysqli_connect('localhost', 'id13394599_administrator', '->f9qDQwGDM7Fqq=') or 
     die ('Unable to connect. Check your connection parameters.');
-mysqli_select_db($db, 'emociones') or die(mysqli_error($db));
+mysqli_select_db($db, 'id13394599_usuarios') or die(mysqli_error($db));
 if ($_GET['action'] == 'edit') {
     //retrieve the record's information 
     $query = 'SELECT
             administrador, tutor, nombre, apellidos, curso, grupo
         FROM
-            users
+            usuarios
         WHERE
             id_alumno = ' . $_GET['id'];
     $result = mysqli_query($db, $query) or die(mysqli_error($db));
@@ -24,7 +24,7 @@ if ($_GET['action'] == 'edit') {
 ?>
 <html>
  <head>
-  <title><?php echo ucfirst($_GET['action']); ?> Musica</title>
+  <title><?php echo ucfirst($_GET['action']); ?> Users</title>
  </head>
  <body>
     <?php
